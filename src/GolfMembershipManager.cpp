@@ -2,7 +2,7 @@
 
 GolfMembershipManager::GolfMembershipManager()
 {
-    listener = new Listener();
+    //listener = new Listener();
 }
 
 GolfMembershipManager::~GolfMembershipManager()

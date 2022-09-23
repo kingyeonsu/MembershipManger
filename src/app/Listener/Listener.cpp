@@ -1,11 +1,12 @@
 #include "Listener.h"
 #include <string.h>
 
-Listener::Listener()
+Listener::Listener(Controller *controller)
 {
     rfid = new CardReader(new SPI(10, 3000000));
     modeButton = new ManageButton(27, "ModeButton");
-    controller = new Controller();
+    //controller = new Controller();
+    this->controller = controller;
 }
 
 Listener::~Listener()

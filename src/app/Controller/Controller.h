@@ -12,9 +12,10 @@ private:
     MembersManageService *membersManageService;
 
 public:
-    Controller();
+    Controller(MembersManageService *membersManageService);
     virtual ~Controller();
     void updateEvent(DeviceData data);
+    
 };
 
 #endif /* __CONTROLLER_H__ */

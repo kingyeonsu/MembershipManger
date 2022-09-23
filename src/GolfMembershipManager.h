@@ -12,6 +12,7 @@ public:
     GolfMembershipManager();
     virtual ~GolfMembershipManager();
     void run();
+    
 };
 
 #endif /* __GOLFMEMBERSHIPMANAGER_H__ */

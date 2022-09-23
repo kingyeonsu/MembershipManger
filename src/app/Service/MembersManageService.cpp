@@ -1,15 +1,20 @@
 #include "MembersManageService.h"
 #include <cstring>
 
-MembersManageService::MembersManageService()
+MembersManageService::MembersManageService(ComDev *comDev)
 {
     membersEntity = new MembersEntity();
     membersManagerState = CARD_READER;
+    this->comDev = comDev;
 }
 
 MembersManageService::~MembersManageService()
 {
+}
 
+void MembersManageService::setComDev(ComDev *comDev)
+{
+    this->comDev = comDev;
 }
 
 void MembersManageService::updateStateEvent(std::string devName)
@@ -39,6 +44,7 @@ void MembersManageService::checkCardNumber(int *cardNum)
             if (membersEntity->findMemberInfo(cardNum)) {
                 printf("Registered Member!\n");
                 membersEntity->printMemberInfo(cardNum);
+                comDev->sendData(cardNum);
             }
             else {
                 printf("Not Registered Member!\n");
