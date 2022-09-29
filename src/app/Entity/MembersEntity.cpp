@@ -115,10 +115,23 @@ bool MembersEntity::delMemberInfo(int *cardNum)
     return false;
 }
 
+bool MembersEntity::delClientMember(std::string name)
+{
+    std::vector<MemberInfo>::iterator itrMember;
+
+    for (itrMember = vecMembersList.begin(); itrMember != vecMembersList.end(); itrMember++) {
+         if (strcmp(itrMember->name, name.c_str()) == 0) {
+            vecMembersList.erase(itrMember);
+            return true;
+        }
+    }
+    return false;
+}
+
 void MembersEntity::memoryToDB()
 {
-    fpDBData = fopen("memberLists.bin", "w"); //NULL
-    FILE *fpDBData2 = fopen("memberLists.txt", "w"); //NULL
+    fpDBData = fopen("memberLists.bin", "w");   //  NULL
+    FILE *fpDBData2 = fopen("memberLists.txt", "w");    // NULL
     if (fpDBData == NULL) {
         fprintf(stderr, "file open error!\n");
         return;

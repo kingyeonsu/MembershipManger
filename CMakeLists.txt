@@ -5,10 +5,14 @@ project(GolfMembershipManager)
 add_executable(${PROJECT_NAME}
     ./src/main.cpp
     ./src/GolfMembershipManager.cpp
+    ./src/app/ClockCheck/ClockCheck.cpp
     ./src/app/Service/MembersManageService.cpp
+    ./src/app/Service/ClockService.cpp
     ./src/app/Listener/Listener.cpp
     ./src/app/Controller/Controller.cpp
     ./src/app/Entity/MembersEntity.cpp
+    ./src/app/View/ClockView.cpp
+    ./src/app/View/LedView.cpp
     ./src/hw/rfid/mfrc522.cpp
     ./src/hw/rfid/CardReader.cpp
     ./src/hw/spi/SPI.cpp
@@ -17,6 +21,9 @@ add_executable(${PROJECT_NAME}
     ./src/hw/Button/ManageButton.cpp
     ./src/hw/tcpServer/ComDev.cpp
     ./src/hw/tcpServer/tcpServer.cpp
+    ./src/hw/led/LED.cpp
+    ./src/hw/LCD/LCD.cpp
+    ./src/hw/I2C/I2C.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC
@@ -26,11 +33,16 @@ target_include_directories(${PROJECT_NAME} PUBLIC
     ./src/app/Controller
     ./src/app/Model
     ./src/app/Entity
+    ./src/app/View
+    ./src/app/ClockCheck
     ./src/hw/rfid
     ./src/hw/spi
     ./src/hw/Monitor
     ./src/hw/Button
-    ./src/hw/tcpServer/
+    ./src/hw/tcpServer
+    ./src/hw/I2C
+    ./src/hw/LCD
+    ./src/hw/led
 )
 
 target_link_libraries(${PROJECT_NAME} PUBLIC

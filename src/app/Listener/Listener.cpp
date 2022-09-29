@@ -1,12 +1,13 @@
 #include "Listener.h"
 #include <string.h>
 
-Listener::Listener(Controller *controller)
+Listener::Listener(Controller *controller, ClockCheck *clockCheck)
 {
     rfid = new CardReader(new SPI(10, 3000000));
     modeButton = new ManageButton(27, "ModeButton");
     //controller = new Controller();
     this->controller = controller;
+    this->clockCheck = clockCheck;
 }
 
 Listener::~Listener()
@@ -20,6 +21,10 @@ void Listener::checkEvent()
     }
     if (modeButton->checkButton()) {
         controller->updateEvent(modeButton->getButtonData());
+    }
+    if (clockCheck->isUpdate())
+    {
+        controller->updateEvent(clockCheck->getClockData());
     }
 }
 
@@ -36,3 +41,4 @@ bool Listener::checkRfid()
 
     return false;
 }
+

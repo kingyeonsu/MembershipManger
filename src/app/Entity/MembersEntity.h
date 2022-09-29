@@ -19,6 +19,7 @@ public:
     void loadMembersInfo();
     void addMemberInfo(MemberInfo member);
     bool delMemberInfo(int *cardNum);
+    bool delClientMember(std::string name);
     void memoryToDB();
     void printMemberInfo(int index);
     void printMemberInfo(std::string name);

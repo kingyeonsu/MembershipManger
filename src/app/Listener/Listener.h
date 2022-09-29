@@ -5,6 +5,7 @@
 #include "Monitor.h"
 #include "Controller.h"
 #include "ManageButton.h"
+#include "ClockCheck.h"
 
 class Listener
 {
@@ -12,9 +13,11 @@ private:
     CardReader *rfid;
     ManageButton *modeButton;
     Controller *controller;
+    ClockCheck *clockCheck;
     uint8_t rfidData[16];
+
 public:
-    Listener(Controller *controller);
+    Listener(Controller *controller, ClockCheck *clockCheck);
     virtual ~Listener();
     void checkEvent();
     bool checkRfid();
